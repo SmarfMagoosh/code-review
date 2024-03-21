@@ -1,3 +1,9 @@
+package main.java;
+
+import main.java.GameResult;
+import main.java.GuessResult;
+import main.java.HumanGuessesGame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.function.Consumer;

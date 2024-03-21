@@ -1,3 +1,9 @@
+package main.java;
+
+import main.java.GameStats;
+import main.java.ScreenID;
+import main.java.StatsFile;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -74,10 +80,10 @@ public class StatsPanel extends JPanel {
         clearResults();
         StatsFile stats = new StatsFile();
 
-        ArrayList<String> labels = stats.getLabels();
+        ArrayList<Integer> labels = stats.getLabels();
         for (int i = 0; i < labels.size(); i++) {
             JLabel resultLabel = resultsLabels.get(i);
-            resultLabel.setText(labels.get(i));
+            resultLabel.setText(Integer.toString(labels.get(i)));
         }
     }
 }

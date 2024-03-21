@@ -1,3 +1,5 @@
+package main.java;
+
 public class ComputerGuessesGame {
     private int numGuesses;
     private int lowerBound;

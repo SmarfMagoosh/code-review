@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.ArrayList;
 
 /**
@@ -41,11 +43,11 @@ public abstract class GameStats {
         }
     }
 
-    public ArrayList<String> getLabels() {
-        ArrayList<String> labels = new ArrayList<>();
+    public ArrayList<Integer> getLabels() {
+        ArrayList<Integer> labels = new ArrayList<>();
         for (int binIndex = 0; binIndex < BIN_EDGES.length; binIndex++) {
             int numGames = this.countGames(binIndex);
-            labels.add(Integer.toString(numGames));
+            labels.add(numGames);
         }
         return labels;
     }

@@ -1,3 +1,7 @@
+package main.java;
+
+import main.java.GuessResult;
+
 import java.util.Random;
 
 /**
