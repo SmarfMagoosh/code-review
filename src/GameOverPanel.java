@@ -63,12 +63,7 @@ public class GameOverPanel extends JPanel {
      */
     public void setGameResults(GameResult result){
         this.gameResult = result;
-
         answerTxt.setText("The answer was " + result.correctValue + ".");
         numGuessesTxt.setText(result.getNumGuessesText());
-
-        if (result.humanWasPlaying) {
-            result.saveResults();
-        }
     }
 }
