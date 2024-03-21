@@ -10,7 +10,6 @@ import java.util.TreeMap;
 
 /**
  * File-backed implementation of GameStats
- *
  * Returns the number of games *within the last 30 days* where the person took a given number of guesses
  */
 public class StatsFile extends GameStats {
