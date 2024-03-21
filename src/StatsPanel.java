@@ -13,7 +13,6 @@ public class StatsPanel extends JPanel {
     private final ArrayList<JLabel> resultsLabels;
 
     public StatsPanel(JPanel cardsPanel) {
-
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         JLabel title = new JLabel("Your Stats");
@@ -32,7 +31,6 @@ public class StatsPanel extends JPanel {
         resultsPanel.add(new JLabel("Guesses"));
         resultsPanel.add(new JLabel("Games"));
 
-        // refactor?
         ArrayList<String> binNames = GameStats.getBinNames();
         for (String binName : binNames) {
             resultsPanel.add(new JLabel(binName));
