@@ -1,5 +1,6 @@
 package main.java.ui;
 
+import main.java.CSVReaderConcrete;
 import main.java.GameStats;
 import main.java.ScreenID;
 import main.java.StatsFile;
@@ -77,7 +78,7 @@ public class StatsPanel extends JPanel {
 
     private void updateResultsPanel() {
         clearResults();
-        StatsFile stats = new StatsFile();
+        StatsFile stats = new StatsFile(new CSVReaderConcrete());
 
         ArrayList<Integer> labels = stats.labels;
         for (int i = 0; i < labels.size(); i++) {

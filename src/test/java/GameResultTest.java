@@ -25,7 +25,7 @@ public class GameResultTest {
     }
 
     @Test
-    public void computerGuessesAfterSeveralTrie() {
+    public void computerGuessesAfterSeveralTries() {
         GameResult gr = new GameResult(false, 0, 7);
         assertEquals("It took me 7 guesses.", gr.getNumGuessesText());
     }

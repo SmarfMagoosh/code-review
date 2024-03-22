@@ -26,13 +26,13 @@ public class StatsFile extends GameStats {
 
     public ArrayList<Integer> labels;
 
-    public StatsFile() {
+    public StatsFile(CSVReaderInterface csvReader) {
         statsMap = new TreeMap<>();
         LocalDateTime limit = LocalDateTime.now().minusDays(30);
 
-        try (CSVReader csvReader = new CSVReader(new FileReader(FILENAME))) {
+        try {
             String[] values;
-            while ((values = csvReader.readNext()) != null) {
+            while ((values = csvReader.getReader().readNext()) != null) {
                 // values should have the date and the number of guesses as the two fields
                 try {
                     LocalDateTime timestamp = LocalDateTime.parse(values[0]);

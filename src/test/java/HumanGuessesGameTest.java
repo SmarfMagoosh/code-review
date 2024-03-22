@@ -1,8 +1,13 @@
 package test.java;
+
+import org.mockito.Mockito.*;
+
+import main.java.GuessResult;
 import main.java.HumanGuessesGame;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
-import main.java.GuessResult;
+
 
 public class HumanGuessesGameTest {
     private HumanGuessesGame game;
@@ -12,7 +17,6 @@ public class HumanGuessesGameTest {
         game = new HumanGuessesGame();
         assertNotNull(game);
         assertEquals(0, game.getNumGuesses());
-        assertFalse(game.isDone());
     }
 
     @Test
