@@ -44,4 +44,20 @@ public class HumanGuessesGameTest {
         assertEquals(3, game.getNumGuesses());
     }
 
+    @Test
+    public void testInvalidGuessNumber() {
+        game = new HumanGuessesGame();
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.makeGuess(-1); // Test with a guess number less than 1
+        });
+    }
+
+    @Test
+    public void testInvalidGuessNumberGreaterThanUpperBound() {
+        game = new HumanGuessesGame();
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.makeGuess(1001); // Test with a guess number greater than 1000
+        });
+    }
+
 }
