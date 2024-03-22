@@ -1,4 +1,7 @@
-package main.java;
+package main.java.ui;
+
+import main.java.GameResult;
+import main.java.ScreenID;
 
 import javax.swing.*;
 import java.awt.*;

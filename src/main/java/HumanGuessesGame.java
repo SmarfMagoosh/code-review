@@ -1,7 +1,5 @@
 package main.java;
 
-import main.java.GuessResult;
-
 import java.util.Random;
 
 /**
@@ -17,7 +15,7 @@ public class HumanGuessesGame {
     private int numGuesses;
     private boolean gameIsDone; // true iff makeGuess has been called with the target value
 
-    HumanGuessesGame(){
+    public HumanGuessesGame(){
         Random randGen = new Random();
         this.target = randGen.nextInt(UPPER_BOUND) + 1;
 
@@ -25,7 +23,7 @@ public class HumanGuessesGame {
         gameIsDone = false;
     }
 
-    GuessResult makeGuess(int value){
+    public GuessResult makeGuess(int value){
         numGuesses += 1;
 
         if(value < target){
@@ -38,11 +36,11 @@ public class HumanGuessesGame {
         return GuessResult.CORRECT;
     }
 
-    int getNumGuesses(){
+    public int getNumGuesses(){
         return numGuesses;
     }
 
-    boolean isDone(){
+    public boolean isDone(){
         return gameIsDone;
     }
 }

@@ -1,8 +1,11 @@
-package main.java;
+package main.java.ui;
 
-import java.awt.*;
+import com.formdev.flatlaf.FlatDarculaLaf;
+import main.java.HumanGuessesGame;
+import main.java.ScreenID;
+
 import javax.swing.*;
-import com.formdev.flatlaf.*;
+import java.awt.*;
 
 /**
  * Creates the UI for the guess-the-number game

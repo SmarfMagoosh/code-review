@@ -17,12 +17,11 @@ import java.util.TreeMap;
 public class StatsFile extends GameStats {
     public static final String FILENAME = "guess-the-number-stats.csv";
 
-
     // maps the number of guesses required to the number of games within
     // the past 30 days where the person took that many guesses
     private SortedMap<Integer, Integer> statsMap;
 
-    public StatsFile(){
+    public StatsFile() {
         statsMap = new TreeMap<>();
         LocalDateTime limit = LocalDateTime.now().minusDays(30);
 

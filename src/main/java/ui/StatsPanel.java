@@ -1,4 +1,4 @@
-package main.java;
+package main.java.ui;
 
 import main.java.GameStats;
 import main.java.ScreenID;
@@ -37,8 +37,7 @@ public class StatsPanel extends JPanel {
         resultsPanel.add(new JLabel("Guesses"));
         resultsPanel.add(new JLabel("Games"));
 
-        ArrayList<String> binNames = GameStats.getBinNames();
-        for (String binName : binNames) {
+        for (String binName : GameStats.binNames) {
             resultsPanel.add(new JLabel(binName));
             JLabel result = new JLabel("--");
             resultsLabels.add(result);

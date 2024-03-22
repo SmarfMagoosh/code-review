@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -10,7 +11,11 @@ import java.util.stream.IntStream;
  * You can edit this file, but the two abstract methods listed below must remain
  */
 public abstract class GameStats {
-    private static final int [] BIN_EDGES = {1, 2, 4, 6, 8, 10, 12, 14};
+    protected static final int [] BIN_EDGES = {1, 2, 4, 6, 8, 10, 12, 14};
+
+    public static final ArrayList<String> binNames = IntStream.range(0, BIN_EDGES.length)
+            .mapToObj(GameStats::getBinName)
+            .collect(Collectors.toCollection(ArrayList::new));
 
     /**
      * @return the number of games played that took numGuesses
@@ -21,14 +26,6 @@ public abstract class GameStats {
      * @return the maximum number of guesses that any game took
      */
     public abstract int maxNumGuesses();
-
-    public static ArrayList<String> getBinNames() {
-        ArrayList<String> names = new ArrayList<>();
-        for(int binIndex = 0; binIndex < BIN_EDGES.length; binIndex++) {
-            names.add(getBinName(binIndex));
-        }
-        return names;
-    }
 
     private static String getBinName(int binIndex) {
         if (binIndex == BIN_EDGES.length - 1) {
@@ -45,12 +42,9 @@ public abstract class GameStats {
     }
 
     public ArrayList<Integer> getLabels() {
-        ArrayList<Integer> labels = new ArrayList<>();
-        for (int binIndex = 0; binIndex < BIN_EDGES.length; binIndex++) {
-            int numGames = this.countGames(binIndex);
-            labels.add(numGames);
-        }
-        return labels;
+        return IntStream.range(0, BIN_EDGES.length)
+                .mapToObj(this::countGames)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     private int countGames(int binIndex) {
