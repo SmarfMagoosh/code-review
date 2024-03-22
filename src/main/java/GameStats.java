@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 /**
  * An interface for a data structure, DB API, file reader, etc. that
@@ -53,16 +54,9 @@ public abstract class GameStats {
     }
 
     private int countGames(int binIndex) {
-        int lowerBound = BIN_EDGES[binIndex];
         boolean lastBin = binIndex == BIN_EDGES.length - 1;
-        int numGames = 0;
-
         int maxIndex = lastBin ? this.maxNumGuesses() : BIN_EDGES[binIndex + 1];
 
-        for(int numGuesses = lowerBound; numGuesses < maxIndex; numGuesses++){
-            numGames += this.numGames(numGuesses);
-        }
-
-        return numGames;
+        return IntStream.range(BIN_EDGES[binIndex], maxIndex).map(this::numGames).sum();
     }
 }
