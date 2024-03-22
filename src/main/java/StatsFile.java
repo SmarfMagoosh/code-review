@@ -7,8 +7,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * File-backed implementation of GameStats
@@ -21,12 +24,14 @@ public class StatsFile extends GameStats {
     // the past 30 days where the person took that many guesses
     private SortedMap<Integer, Integer> statsMap;
 
+    public ArrayList<Integer> labels;
+
     public StatsFile() {
         statsMap = new TreeMap<>();
         LocalDateTime limit = LocalDateTime.now().minusDays(30);
 
         try (CSVReader csvReader = new CSVReader(new FileReader(FILENAME))) {
-            String[] values = null;
+            String[] values;
             while ((values = csvReader.readNext()) != null) {
                 // values should have the date and the number of guesses as the two fields
                 try {
@@ -53,6 +58,16 @@ public class StatsFile extends GameStats {
             // NOTE: In a full implementation, we would log this error and alert the user
             // NOTE: For this project, you do not need unit tests for handling this exception.
         }
+        labels = IntStream.range(0, BIN_EDGES.length)
+            .mapToObj(this::countGames)
+            .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    private int countGames(int binIndex) {
+        boolean lastBin = binIndex == BIN_EDGES.length - 1;
+        int maxIndex = lastBin ? this.maxNumGuesses() : BIN_EDGES[binIndex + 1];
+
+        return IntStream.range(BIN_EDGES[binIndex], maxIndex).map(this::numGames).sum();
     }
 
     @Override

@@ -40,17 +40,4 @@ public abstract class GameStats {
             }
         }
     }
-
-    public ArrayList<Integer> getLabels() {
-        return IntStream.range(0, BIN_EDGES.length)
-                .mapToObj(this::countGames)
-                .collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    private int countGames(int binIndex) {
-        boolean lastBin = binIndex == BIN_EDGES.length - 1;
-        int maxIndex = lastBin ? this.maxNumGuesses() : BIN_EDGES[binIndex + 1];
-
-        return IntStream.range(BIN_EDGES[binIndex], maxIndex).map(this::numGames).sum();
-    }
 }

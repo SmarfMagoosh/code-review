@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ComputerGuessesGameTest {
+
     @Test
     public void testGuessing() {
         // test game for every possible value

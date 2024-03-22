@@ -79,7 +79,7 @@ public class StatsPanel extends JPanel {
         clearResults();
         StatsFile stats = new StatsFile();
 
-        ArrayList<Integer> labels = stats.getLabels();
+        ArrayList<Integer> labels = stats.labels;
         for (int i = 0; i < labels.size(); i++) {
             JLabel resultLabel = resultsLabels.get(i);
             resultLabel.setText(Integer.toString(labels.get(i)));
