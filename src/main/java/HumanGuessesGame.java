@@ -23,9 +23,11 @@ public class HumanGuessesGame {
         gameIsDone = false;
     }
 
-    public GuessResult makeGuess(int value){
+    public GuessResult makeGuess(int value) throws IllegalArgumentException{
         numGuesses += 1;
-
+        if (value < 0 || value > 1000){
+            throw new IllegalArgumentException();
+        }
         if(value < target){
             return GuessResult.LOW;
         }
